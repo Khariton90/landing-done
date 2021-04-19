@@ -2,9 +2,9 @@
 <div>
 <transition name="slide" mode="out-in">
 
-	<div v-show="menu"class="mobile-menu">
+	<div v-show="MENU_STATE"class="mobile-menu">
 		<ul>
-			<li @click="menu = false" v-for="item of menuItem" >
+			<li @click="menuClick" v-for="item of menuItem" >
 				{{item.item}}
 			</li>
 		</ul>
@@ -32,9 +32,9 @@
 			<a href="contacts"  v-scroll-to="''" @click.prevent="onStart" class="nav-link cont">Контакты</a>
 				</li>
 				</ul>
-								<button class="order__website" id="buttonTop">Заказать сайт</button>
+								<button class="order__website" id="buttonTop" @click="menuClick">Заказать сайт</button>
 			</div>
-		<button @click="menu ? menu = false : menu = true" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"><span></span></span>
 		</button>
 		</div>
@@ -81,6 +81,7 @@ import Development from "@/components/Development"
 import Footer from "@/components/Footer"
 import Carousel from "@/components/carousel"
 import Header from "@/components/Header"
+import {mapGetters} from "vuex"
 	export default{
 		name: 'Projects',
 		data(){
@@ -192,9 +193,17 @@ link: '#contacts'
 			Carousel,
 			Header
 		},
+computed:{
+...mapGetters([
+'MENU_STATE'
+	])
+},
 methods:{
-ggg(){
-	console.log('hello')
+menuClick(){
+	this.$store.dispatch('TOGGLE_MENU')
+},
+orderWebsite(){
+	console.log('Заказать')
 },
 	onStart: function(e) {
 		window.history.go(-1)
@@ -207,12 +216,13 @@ ggg(){
 },300)
 
     },
+
 	},
+
 mounted(){
 
 }
 }
-
 </script>
 
 <style scoped>

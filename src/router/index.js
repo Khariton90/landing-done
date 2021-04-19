@@ -43,5 +43,10 @@ scrollBehavior (to, from, savedPosition) {
 },
 
 })
+router.beforeEach((to, from, next) => {
+  console.log(from)
+  next()
 
+
+})
 export default router

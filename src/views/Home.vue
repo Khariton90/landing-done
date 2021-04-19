@@ -2,9 +2,9 @@
 <div>
 <transition name="slide" mode="out-in">
 
-	<div v-show="menu"class="mobile-menu">
+	<div v-show="MENU_STATE"class="mobile-menu">
 		<ul>
-			<li @click="menu = false" v-for="item of menuItem" v-scroll-to="item.link" :class="{'nav-link' : menu}">
+			<li @click="menuClick" v-for="item of menuItem" v-scroll-to="item.link" :class="{'nav-link' : menu}">
 				{{item.item}}
 			</li>
 		</ul>
@@ -34,7 +34,7 @@
 				</ul>
 								<button class="order__website" id="buttonTop">Заказать сайт</button>
 			</div>
-		<button @click="menu ? menu = false : menu = true" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon" :class="{active: menu}"><span></span></span>
 		</button>
 		</div>
@@ -147,6 +147,7 @@ import Price from "@/components/Section-price"
 import Footer from "@/components/Footer"
 import Carousel from "@/components/carousel"
 import scrollTo from "../scripts/scrollTo.js"
+import {mapGetters} from "vuex"
 export default {
 	data(){
 			return {
@@ -265,7 +266,15 @@ link: '#contacts'
 		Footer,
 		Carousel
 	},
+computed:{
+...mapGetters([
+'MENU_STATE'
+	])
+},
 	methods: {
+menuClick(){
+	this.$store.dispatch('TOGGLE_MENU')
+},
  navActive() {
 	if(window.pageYOffset < 70){
 		document.querySelector('.bg-light').classList.remove('active');

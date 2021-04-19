@@ -30,7 +30,7 @@
 			<a href="contacts"  v-scroll-to="''" @click.prevent="onStart" class="nav-link cont">Контакты</a>
 				</li>
 				</ul>
-								<button @click="ggg" class="order__website" id="buttonTop">Заказать сайт</button>
+								<button @click="orderWebsite" class="order__website" id="buttonTop">Заказать сайт</button>
 			</div>
 		<button @click="menu ? menu = false : menu = true" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon" :class="{active: menu}"><span></span></span>
@@ -62,11 +62,10 @@ methods:{
 },300)
 
     },
-ggg(){
-this.$emit('ggg')
+orderWebsite(){
+this.$emit('orderWebsite')
 }
 	},
-
 
 }
 </script>

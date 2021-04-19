@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Header @ggg="ggg" />
+		<Header @orderWebsite="orderWebsite" />
 		<section class="auto__repair">
 	
 	<div class="auto__title">
@@ -86,8 +86,8 @@ components:{
 	Header
 },
 methods: {
-ggg(){
-	console.log('hello')
+orderWebsite(){
+	console.log('Заказать')
 },
 },
 mounted() {

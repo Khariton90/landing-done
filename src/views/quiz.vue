@@ -121,9 +121,9 @@
  <p class=" pColor text-center">{{ results[answer.id] }}</p></div>
 </div>
 
-<div class="row buttonsEnd d-flex justify-content-center">
-	<div class="col-12 col-lg-4">		<button class="btn btn-primary" @click="repeat">Ответить снова</button></div>
-	<div class="col-12 col-lg-4">		<button class="btn btn-primary" @click="send">Отправить квиз</button></div>
+<div class="row btnVariants endsBtn">
+	<div>		<button class="btn btn-primary" @click="repeat">Ответить снова</button></div>
+	<div>		<button class="btn btn-primary" @click="send">Отправить квиз</button></div>
 </div>
 			</div>
 		</div>
@@ -224,7 +224,7 @@ if(this.incrementProgress >= 3){
 },
 send(){
 	alert('Сообщение отправлено');
-	this.repeat()
+	window.history.go(-1)
 },
 repeat(){
 	setTimeout(() => {
@@ -272,7 +272,10 @@ this.variant1.forEach(variants => {
 }
 return setTimeout(() => {
 this.stepItem++
-this.incrementProgress++	
+this.incrementProgress++
+if(this.incrementProgress >=3){
+	menuRemoveResize()
+}
 }, 1300)
 }
 		}else if(this.incrementProgress >= 3){
@@ -460,6 +463,9 @@ border-radius:50%;
 }
 .describeQuiz{
 	width: 70%;
+}
+.endsBtn{
+	align-self: center!important;
 }
 @media screen(max-width: 992px) {
 	.quiz{
