@@ -2,38 +2,41 @@
 	<div>
 	<transition name="slide" mode="out-in">
 
-	<div v-show="menu"class="mobile-menu">
+	<div v-show="MENU_STATE"class="mobile-menu">
 		<ul>
-
+			<li @click="menuClick" v-for="item of MENU_ITEM" v-scroll-to="item.link">
+				<a class="nav-lin">{{item.item}}</a>
+				
+			</li>
 		</ul>
 	</div>
  </transition>
 					<header id="main">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light active">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
 		<a class="navbar-brand" href="#"><img src="../assets/logo.svg" alt="" width="141px"></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item">
-				<a href="website__development" v-scroll-to="''" @click.prevent="onStart" class="nav-link home">Главная</a>
+			<a class="nav-link home active" v-scroll-to="'#website__development'">Главная</a>
 				</li>
 			<li class="nav-item">
-			<a href="full__support"  v-scroll-to="''" @click.prevent="onStart" class="nav-link">Поддержка</a>
+			<a class="nav-link"  v-scroll-to="'#full__support'">Поддержка</a>
 				</li>
 			<li class="nav-item">
-				<a href="how__much"  v-scroll-to="''" @click.prevent="onStart"  class="nav-link">Цены</a>
+			<a  class="nav-link" v-scroll-to="'#how__much'">Цены</a>
 				</li>
 			<li class="nav-item">
-			<a href="our__job"  v-scroll-to="''" @click.prevent="onStart"  class="nav-link activeThis active">Наши работы</a>
+			<a  class="nav-link" v-scroll-to="'#our__job'">Наши работы</a>
 				</li>
 			<li class="nav-item">
-			<a href="contacts"  v-scroll-to="''" @click.prevent="onStart" class="nav-link cont">Контакты</a>
+			<a  class="nav-link cont" v-scroll-to="'#contacts'">Контакты</a>
 				</li>
 				</ul>
-								<button @click="orderWebsite" class="order__website" id="buttonTop">Заказать сайт</button>
+								<button class="order__website" id="buttonTop">Заказать сайт</button>
 			</div>
-		<button @click="menu ? menu = false : menu = true" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon" :class="{active: menu}"><span></span></span>
+		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon" :class="{active: MENU_STATE}"><span></span></span>
 		</button>
 		</div>
 	</nav>
@@ -42,6 +45,7 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex"
     export default {
 name: 'Header',
 data(){
@@ -50,7 +54,16 @@ data(){
 
 	}
 },
+computed:{
+...mapGetters([
+'MENU_STATE',
+'MENU_ITEM'
+	])
+},
 methods:{
+	menuClick(){
+	this.$store.dispatch('TOGGLE_MENU')
+},
 	onStart: function(e) {
 		window.history.go(-1)
 

@@ -120,7 +120,21 @@
 <hr>
  <p class=" pColor text-center">{{ results[answer.id] }}</p></div>
 </div>
-
+<div class="modal" tabindex="-1" ref="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Спасибо</h5>
+ 
+      </div>
+      <div class="modal-body">
+        <p>Сообщение оправлено</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row btnVariants endsBtn">
 	<div>		<button class="btn btn-primary" @click="repeat">Ответить снова</button></div>
 	<div>		<button class="btn btn-primary" @click="send">Отправить квиз</button></div>
@@ -223,8 +237,13 @@ if(this.incrementProgress >= 3){
 
 },
 send(){
-	alert('Сообщение отправлено');
-	window.history.go(-1)
+	const modal = this.$refs.modal
+	modal.style.display = 'block'
+	setTimeout(()=>{
+		modal.style.display = 'none'
+			window.history.go(-1)
+	},2000)
+
 },
 repeat(){
 	setTimeout(() => {
@@ -317,6 +336,9 @@ window.removeEventListener('resize', this.resizeProgress)
 
 
 <style scoped>
+.modal-content{
+	background:#F09D51;
+}
 .vars {
 	display: flex;
 	flex-direction: column;

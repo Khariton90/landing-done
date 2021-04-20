@@ -17,13 +17,8 @@ children: [{ path: '/#contacts', name:'cont'} ]
 //Страница квиза
   { path: '/quiz', name: 'quiz',component: () => import('../views/quiz.vue')},
 //
-{ path: '/Projects:id',     component: () => import('../views/Garage.vue'),
-
-children: [{ path: '/projects/garage', name:'garage'}]},
-
-{ path: '/Projects/:id',  component: () => import('../views/Workshop.vue'),
-
-children: [{ path: '/projects/workshop', name:'workshop'} ]},
+{ path: '/projects/garage', name:'garage',   component: () => import('../views/Garage.vue')},
+{ path: '/projects/workshop', name:'workshop',  component: () => import('../views/Workshop.vue')},
 ]
 
 const router = new VueRouter({
@@ -31,21 +26,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 scrollBehavior (to, from, savedPosition) {
-     if (to.hash) {
-        return {
-          selector: to.hash , 
-          offset: { x: false, y: 0 }
-      }
-      }
-   else {
-    return { x: 0, y: 0 }
-  }
+
 },
 
 })
 router.beforeEach((to, from, next) => {
-  console.log(from)
+
   next()
+
 
 
 })

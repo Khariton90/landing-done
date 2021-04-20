@@ -2,30 +2,7 @@
 	<footer class="section" id="footer">
 <div class="container">
 			<div class="form__footer">
-				<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Оставьте заявку и получите <br>
-консультацию профессионального <br>
-маркетолога</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" value="Email">
-  </div>
-  <div class="form-group">
-    <input type="tel" class="form-control" id="exampleInputTel2" value="Телефон">
-  </div>
-    <div class="form-group">
-    <label for="exampleFormControlSelect1">Какая услуга вас интересует?</label>
-    <select class="select" id="exampleFormControlSelect2">
-      <option>Сайт визитка</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary">Оставить заявку</button>
-    </div>
-</form>
+				<Form />
 </div>
 <div class="row footer__describe">
 	<div class="col-4 col-lg-5 col-xl-4"></div>
@@ -62,11 +39,15 @@
 </template>
 
 <script>
+import Form from "@/components/Form"
 export default{
 	data(){
 		return{
 			logoImg: require('../assets/logo.svg')
 		}
+	},
+	components:{
+		Form
 	}
 }
 

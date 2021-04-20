@@ -16,30 +16,7 @@
 			<img class="anim" src="" alt="">
 		</div>
 			<div class="col form__header">
-			<form>
-			<div class="form-group">
-			<label for="exampleInputEmail1">Оставьте заявку и получите <br>
-			консультацию профессионального <br>
-			маркетолога</label>
-			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-			</div>
-			<div class="form-group">
-			<input type="tel" class="form-control" id="exampleInputTel1" placeholder="Телефон">
-			</div>
-			<div class="form-group">
-			<label for="exampleFormControlSelect1">Какая услуга вас интересует?</label>
-			<select class="select" id="exampleFormControlSelect1">
-			<option>Сайт визитка</option>
-			<option>2</option>
-			<option>3</option>
-			<option>4</option>
-			<option>5</option>
-			</select>
-		</div>
-			<div class="form-group">
-			<button type="submit" class="btn btn-primary">Оставить заявку</button>
-			</div>
-			</form>
+<Form />
 		</div>
 		</div>
 	</div>
@@ -47,8 +24,22 @@
 </template>
 
 <script>
+import Form from "@/components/Form"
 		export default{
-			props: ['message'],
+data(){
+	return{
+message: '19 999'
+	}
+},
+components:{
+	Form
+},
+methods:{
+
+},
+mounted(){
+
+}
 		}
 </script>
 

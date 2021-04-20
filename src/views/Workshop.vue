@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Header />
+		<HeaderChild />
 		<section class="auto__repair">
 	
 	<div class="auto__title">
@@ -77,13 +77,13 @@
 
 <script>
 import Footer from "@/components/Footer"
-import Header from "@/components/Header"
+import HeaderChild from "@/components/HeaderChild"
 import btnFixed from "../scripts/btnFix"
 	export default{
 name:'Garage',
 components:{
 	Footer,
-	Header
+	HeaderChild
 },
 methods: {
 

@@ -1,50 +1,11 @@
 <template>
 <div>
-<transition name="slide" mode="out-in">
-
-	<div v-show="MENU_STATE"class="mobile-menu">
-		<ul>
-			<li @click="menuClick" v-for="item of menuItem" v-scroll-to="item.link" :class="{'nav-link' : menu}">
-				{{item.item}}
-			</li>
-		</ul>
-	</div>
- </transition>
-					<header id="main">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<div class="container">
-		<a class="navbar-brand" href="#"><img src="../assets/logo.svg" alt="" width="141px"></a>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			<li class="nav-item">
-			<a class="nav-link home active" v-scroll-to="'#website__development'">Главная</a>
-				</li>
-			<li class="nav-item">
-			<a class="nav-link"  v-scroll-to="'#full__support'">Поддержка</a>
-				</li>
-			<li class="nav-item">
-			<a  class="nav-link" v-scroll-to="'#how__much'">Цены</a>
-				</li>
-			<li class="nav-item">
-			<a  class="nav-link activeThis" v-scroll-to="'#our__job'">Наши работы</a>
-				</li>
-			<li class="nav-item">
-			<a  class="nav-link cont" v-scroll-to="'#contacts'">Контакты</a>
-				</li>
-				</ul>
-								<button class="order__website" id="buttonTop">Заказать сайт</button>
-			</div>
-		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon" :class="{active: menu}"><span></span></span>
-		</button>
-		</div>
-	</nav>
-</header>
+<Header />
  <transition name="slide" mode="out-in">
 	<div v-show="!menu">
 
 		<!--Секция - Разработка сайтов-->
-<Development :message="message" />
+<Development/>
 
 		<!--Секция - Для кого это необходимо-->
 	<section  class="who__this" id="who__this">
@@ -146,36 +107,14 @@ import Youget from "@/components/Youget"
 import Price from "@/components/Section-price"
 import Footer from "@/components/Footer"
 import Carousel from "@/components/carousel"
+import Header from "@/components/Header"
 import scrollTo from "../scripts/scrollTo.js"
 import {mapGetters} from "vuex"
 export default {
 	data(){
 			return {
 			menu:false,
-			menuItem: [
-{
-item: 'Главная',
-link: '#website__development'
-},
-{
-item: 'Наши Работы',
-link: '#our__job'
-},
-{
-item: 'Цены',
-link: '#how__much'
-},
-{
-item: 'Поддержка',
-link: '#full__support'
-},
-{
-item: 'Контакты',
-link: '#contacts'
-},
-			],
-
-		message: '19 999',
+		message: 19999,
 		title: 'Для кого это необходимо?',
 		titleJob: 'Наши работы',
 				carts: [
@@ -257,6 +196,7 @@ link: '#contacts'
 	}
 	},
 	components:{
+		Header,
 		Development,
 		Usabout,
 		Steps,
@@ -268,7 +208,8 @@ link: '#contacts'
 	},
 computed:{
 ...mapGetters([
-'MENU_STATE'
+'MENU_STATE',
+'MENU_ITEM'
 	])
 },
 	methods: {

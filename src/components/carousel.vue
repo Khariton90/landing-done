@@ -18,7 +18,7 @@
 		v-on:mouseleave="cart.isActive = false" :src="cart.image" alt="">
       <div      v-on:mouseover="cart.isActive = true"
 		v-on:mouseleave="cart.isActive = false"class="describe__job":class="{active: cart.isActive}">
-      			<span v-on:click="$router.push({ name: `${cart.name}`})" :class="{active: cart.isActive}" class="describe__title" >{{ cart.title }}</span>
+      			<span v-on:click="$router.push({ name: `${cart.name}`})" :class="{active: cart.isActive}" class="describe__title" v-html="cart.title"></span>
       					<div class="about__this" :class="{active: cart.isActive}">
       						<p v-if="cart.isActive" v-html="cart.about"></p>
 		<p v-else></p>
