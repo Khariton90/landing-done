@@ -5,19 +5,19 @@
 	<div v-show="MENU_STATE"class="mobile-menu">
 				<ul>
 			<li>
-				<a href="website__development" @click.prevent="onStart" class="nav-link home">Главная</a>
+				<a href="website__development" @click.prevent="onStart">Главная</a>
 				</li>
 			<li>
-			<a href="full__support"  @click.prevent="onStart" class="nav-link">Поддержка</a>
+			<a href="full__support"  @click.prevent="onStart">Поддержка</a>
 				</li>
 			<li>
-				<a href="how__much"  @click.prevent="onStart"  class="nav-link">Цены</a>
+				<a href="how__much"  @click.prevent="onStart" >Цены</a>
 				</li>
 			<li>
-			<a href="our__job"  @click.prevent="onStart"  class="nav-link activeThis active">Наши работы</a>
+			<a href="our__job"  @click.prevent="onStart">Наши работы</a>
 				</li>
 			<li>
-			<a href="contacts"  @click.prevent="onStart" class="nav-link cont">Контакты</a>
+			<a href="contacts"  @click.prevent="onStart">Контакты</a>
 				</li>
 				</ul>
 	</div>
@@ -47,7 +47,7 @@
 								<button class="order__website" id="buttonTop" @click="menuClick">Заказать сайт</button>
 			</div>
 		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"><span></span></span>
+		<span class="navbar-toggler-icon" :class="{active: MENU_STATE}"><span></span></span>
 		</button>
 		</div>
 	</nav>
