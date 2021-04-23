@@ -72,6 +72,11 @@ computed:{
 },
 methods:{
 menuClick(){
+		if(document.body.classList.contains('lock')){
+			document.body.classList.remove('lock')
+		}else{
+			document.body.classList.add('lock')
+		}
 	this.$store.dispatch('TOGGLE_MENU')
 },
 orderWebsite(){
@@ -79,6 +84,11 @@ orderWebsite(){
 },
 	onStart: function(e) {
 		if(window.screen.width < 992){
+		if(document.body.classList.contains('lock')){
+			document.body.classList.remove('lock')
+		}else{
+			document.body.classList.add('lock')
+		}
 			this.$store.dispatch('TOGGLE_MENU')
 		}
 		window.history.go(-1)

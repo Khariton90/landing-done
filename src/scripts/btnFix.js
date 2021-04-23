@@ -11,7 +11,7 @@ else{
 }
 	}
 else{
-if(scrollDistance < 1500){
+if(scrollDistance < 2000 && scrollDistance > 1000){
 	document.getElementById('iWant').classList.add('fixBtn');
 }
 else{

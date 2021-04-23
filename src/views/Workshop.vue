@@ -4,8 +4,8 @@
 		<section class="auto__repair">
 	
 	<div class="auto__title">
-		<h5 class="projectsTitle">Автомастерская</h5>
-		<p class="projectsSubtitle">AutoRoom</p>
+		<h5 class="projectsTitle">Мастерская на дому</h5>
+		<p class="projectsSubtitle">WorkShop</p>
 	</div>
 </section>
 <section class="project__description">
@@ -101,98 +101,4 @@ beforeDestroy(){
 
 <style scoped>
 
-a{
-	cursor:pointer;
-}
-	.projects{
-	padding: 62px 0 259px 0;
-	background: #E5E5E5;
-}
-.auto__repair{
-	background: url(../assets/AutoRepair.png) no-repeat center;
-	background-size: 100%;
-	width: 100%;
-	height: auto;
-	padding: calc(0px + 160 * ((100vw - 375px) / (1920 - 375))) 0;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.project__description,.sitesImages{
-background: #E5E5E5;
-}
-.auto__title{
-	background: rgba(0, 0, 0, 0.3);
-	width:100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 27px 0 32px 0;
-}
-
-.projectsTitle{
-	color: #E8E9EB;
-	font-weight: bold;
-font-size: calc(32px + 16 * ((100vw - 375px) / (1920 - 375)));
-line-height: calc(39px + 20 * ((100vw - 375px) / (1920 - 375)));
-}
-.projectsSubtitle{
-color:#F09D51;
-	font-weight: bold;
-font-size: calc(32px + 16 * ((100vw - 375px) / (1920 - 375)));
-line-height: calc(39px + 20 * ((100vw - 375px) / (1920 - 375)));
-}
-.project__description{
-	padding: 12px 0 74px 0;
-}
-.project__link .col-sm{
-	text-align:center;
-}
-.linksTitle{
-font-weight: 600;
-font-size: 18px;
-line-height: 22px;
-color: #313638;
-}
-.project__description h2 {
-	text-align:left;
-	padding-top: 37px;
-	padding-left: 0;
-	color: #000000;
-	width:100%;
-}
-.tasks-opetations span{
-	font-weight: 600;
-font-size: 24px;
-line-height: 29px;
-color: #000000;
-margin-bottom: 16px;
-display: block;
-}
-.tasks-opetations{
-	padding: 0 20px;
-}
-.tasks-opetations ul{
-	list-style-type: disc;
-	padding-left: 16px;
-}
-.tasks-opetations li{
-	padding-left: 0;
-}
-.cartsSites div{
-	text-align: center;
-	padding-bottom: 30px;
-}
-.cartsSites div:last-child{
-padding-bottom: 197px;
-}
-.cartsSites{
-	flex-direction: column;
-}
-.cartsSites img{
-	max-width: 100%;
-	height: auto;
-}
-@media (min-width: 500px) {
-
-}
 </style>

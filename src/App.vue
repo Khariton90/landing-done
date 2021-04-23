@@ -18,6 +18,10 @@ data(){
 }
 },
 methods:{
+
+},
+mounted(){
+
 }
 }
 

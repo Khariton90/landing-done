@@ -18,19 +18,19 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item">
-			<a class="nav-link home active" v-scroll-to="'#website__development'">Главная</a>
+			<a @click.prevent="" class="nav-link home active" v-scroll-to="'#website__development'">Главная</a>
 				</li>
 			<li class="nav-item">
-			<a class="nav-link"  v-scroll-to="'#full__support'">Поддержка</a>
+			<a @click.prevent="" class="nav-link"  v-scroll-to="'#full__support'">Поддержка</a>
 				</li>
 			<li class="nav-item">
-			<a  class="nav-link" v-scroll-to="'#how__much'">Цены</a>
+			<a @click.prevent=""  class="nav-link" v-scroll-to="'#how__much'">Цены</a>
 				</li>
 			<li class="nav-item">
-			<a  class="nav-link" v-scroll-to="'#our__job'">Наши работы</a>
+			<a  @click.prevent="" class="nav-link" v-scroll-to="'#our__job'">Наши работы</a>
 				</li>
 			<li class="nav-item">
-			<a  class="nav-link cont" v-scroll-to="'#contacts'">Контакты</a>
+			<a @click.prevent=""  class="nav-link cont" v-scroll-to="'#contacts'">Контакты</a>
 				</li>
 				</ul>
 								<button class="order__website" id="buttonTop">Заказать сайт</button>
@@ -62,6 +62,11 @@ computed:{
 },
 methods:{
 	menuClick(){
+		if(document.body.classList.contains('lock')){
+			document.body.classList.remove('lock')
+		}else{
+			document.body.classList.add('lock')
+		}
 	this.$store.dispatch('TOGGLE_MENU')
 },
 	onStart: function(e) {

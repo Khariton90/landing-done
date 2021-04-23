@@ -43,7 +43,7 @@
 						v-on:click="addVariants"><span>{{ variant.name }}</span></li>
 					</ul>
 				</div>
-				<div class="col-12 col-md-7" v-if="incrementProgress  == 0">
+				<div class="col-12 col-md-7 p-3" v-if="incrementProgress  == 0">
 					<div>
  <p>Для чего это нужно:</p>
 
@@ -56,7 +56,7 @@
 
 </div>
 				</div>
-				<div class="col-12 col-md-7" v-else-if="incrementProgress  == 1">
+				<div class="col-12 col-md-7 p-3" v-else-if="incrementProgress  == 1">
 					<div>
  <p>Вопрос 2:</p>
 
@@ -70,7 +70,7 @@
 
 </div>
 				</div>
-				<div class="col-12 col-md-7" v-else-if="incrementProgress  == 2">
+				<div class="col-12 col-md-7 p-3" v-else-if="incrementProgress  == 2">
 					<div>
  <p>Вопрос 3:</p>
 
@@ -83,7 +83,7 @@
 
 </div>
 				</div>
-				<div class="col-12 col-md-7" v-else-if="incrementProgress  == 3">
+				<div class="col-12 col-md-7 p-3" v-else-if="incrementProgress  == 3">
 					<div>
  <p>Вопрос 4:</p>
 
@@ -96,7 +96,7 @@
 
 </div>
 				</div>
-				<div class="col-12 col-md-7" v-else-if="incrementProgress  == 4">
+				<div class="col-12 col-md-7 p-3" v-else-if="incrementProgress  == 4">
 					<div>
  <p>Вопрос 5:</p>
 
@@ -258,7 +258,7 @@ const exitModal = this.$refs.exitModal
 exitModal.classList.contains('active') ? exitModal.classList.remove('active') : exitModal.classList.add('active')
 },
 menuRemoveResize(){
-if(this.incrementProgress >= 3){
+if(this.incrementProgress > 2){
 	window.removeEventListener('resize', this.resizeProgress)
 }else{
 	window.addEventListener('resize', this.resizeProgress)
@@ -321,9 +321,6 @@ this.variant1.forEach(variants => {
 return setTimeout(() => {
 this.stepItem++
 this.incrementProgress++
-if(this.incrementProgress >=3){
-	menuRemoveResize()
-}
 }, 1300)
 }
 		}else if(this.incrementProgress >= 3){
@@ -335,10 +332,8 @@ if(this.incrementProgress >=3){
 
 },
 ignore(){
-	if(this.incrementProgress >= 3){
-			this.menuRemoveResize()
-		}
 	this.addQuiz()
+	this.menuRemoveResize()
 setTimeout(() => {
 	this.results.push('-')
 this.stepItem++
@@ -376,11 +371,17 @@ window.removeEventListener('resize', this.resizeProgress)
 }
 .quiz__exit{
 	position:fixed;
-	width:30px;
-	height: 30px;
+	width:20px;
+	height: 20px;
 	right: 20px;
 	top:20px;
 	cursor: pointer;
+	z-index: 100;
+	transition: all 0.3s ease;
+}
+.quiz__exit:hover{
+	transition: all 0.3s ease;
+	transform: scale(1.3);
 }
 .exitModal.active{
 	display: block;
@@ -391,8 +392,8 @@ window.removeEventListener('resize', this.resizeProgress)
 	width:100%;
 	height: 4px;
 	background: black;
-	top:15px;
-	border-radius:5px;
+	top:8px;
+	border-radius:2px;
 }
 .quiz__exit:before{
 	transform: rotate(-45deg);
