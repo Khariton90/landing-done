@@ -168,6 +168,9 @@ color: #000000;
 margin-bottom: 16px;
 display: block;
 }
+.tasks-opetations{
+	padding: 0 20px;
+}
 .tasks-opetations ul{
 	list-style-type: disc;
 	padding-left: 16px;

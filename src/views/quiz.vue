@@ -1,12 +1,37 @@
 <template>
-	<div>
+	<div class="quiz__wrapper">
+	<div class="quiz__exit" @click="getOut">
+	</div>
+	<div class="modal exitModal" tabindex="-1" ref="exitModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Вы не заполнили квиз</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+			@click="getOut"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Точно хотите выйти?</p>
+      </div>
+      <div class="modal-footer quit__footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal" 
+        @click="$router.push({ name: 'Home' })"
+        >Выйти</button>
+        <button type="button" class="btn btn-dark" @click="getOut">Продолжить</button>
+      </div>
+    </div>
+  </div>
+</div>
 	<div class="quiz" v-if="incrementProgress  <= 3">
-		<h1 v-if="incrementProgress  == 0">Нужна админка?</h1>
-		<h1 v-else-if="incrementProgress  == 1">Вопрос 2</h1>
-		<h1 v-else-if="incrementProgress  == 2">Вопрос 3</h1>
-		<h1 v-else-if="incrementProgress  == 3">Вопрос 4</h1>
-		<h1 v-else>Вопрос 5</h1>
-		<div class="container">
+		<h1 class="tittle__quiz" v-if="incrementProgress  == 0">Нужна админка?</h1>
+		<h1 class="tittle__quiz" v-else-if="incrementProgress  == 1">Вопрос 2</h1>
+		<h1 class="tittle__quiz" v-else-if="incrementProgress  == 2">Вопрос 3</h1>
+		<h1 class="tittle__quiz" v-else-if="incrementProgress  == 3">Вопрос 4</h1>
+		<h1 class="tittle__quiz" v-else>Вопрос 5</h1>
+		<div class="container quiz__container">
 			<div class="row">
 				<div class="col-5 variants">
 					<ul>
@@ -120,7 +145,7 @@
 <hr>
  <p class=" pColor text-center">{{ results[answer.id] }}</p></div>
 </div>
-<div class="modal" tabindex="-1" ref="modal">
+<div class="modal message__quiz" tabindex="-1" ref="modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -228,6 +253,10 @@ answers: [
 
 	],
 		methods:{
+getOut(){
+const exitModal = this.$refs.exitModal
+exitModal.classList.contains('active') ? exitModal.classList.remove('active') : exitModal.classList.add('active')
+},
 menuRemoveResize(){
 if(this.incrementProgress >= 3){
 	window.removeEventListener('resize', this.resizeProgress)
@@ -336,8 +365,46 @@ window.removeEventListener('resize', this.resizeProgress)
 
 
 <style scoped>
+.quiz__wrapper{
+	position:relative;
+}
+.quit__footer{
+	padding: 0;
+}
+.quit__footer button{
+	margin:15px;
+}
+.quiz__exit{
+	position:fixed;
+	width:30px;
+	height: 30px;
+	right: 20px;
+	top:20px;
+	cursor: pointer;
+}
+.exitModal.active{
+	display: block;
+}
+.quiz__exit:before, .quiz__exit:after{
+	content:'';
+	position: absolute;
+	width:100%;
+	height: 4px;
+	background: black;
+	top:15px;
+	border-radius:5px;
+}
+.quiz__exit:before{
+	transform: rotate(-45deg);
+}
+.quiz__exit:after{
+	transform: rotate(45deg);
+}
+.message__quiz,.exitModal{
+	background: rgba(0,0,0,0.8)!important;
+}
 .modal-content{
-	background:#F09D51;
+	background:#E5E5E5;
 }
 .vars {
 	display: flex;
@@ -407,13 +474,7 @@ pre{
 ul{
 	padding:0;
 }
-h1{
-	text-align: center;
-	font-size: 24px;
-line-height: 29px;
-color: #313638;
-padding: 62px 0 101px 0;
-}
+
 .variantType{
 	transition: 0.2s all 0s ease;
 	position: relative;
@@ -490,6 +551,7 @@ border-radius:50%;
 	align-self: center!important;
 }
 @media screen(max-width: 992px) {
+
 	.quiz{
     width: 100%;
     height: auto;

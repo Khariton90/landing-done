@@ -687,7 +687,17 @@ top: -110px;
     opacity: 0;
     transition: all 0.2s ease;
 }
-
+.quiz__container{
+    justify-content: space-evenly!important;
+}
+.tittle__quiz{
+    text-align: center;
+  font-size: 24px;
+line-height: 29px;
+color: #313638;
+padding: 10px 0;
+margin:0!important;
+}
 @media (min-width: 500px) {
   .navbar-expand-lg .navbar-nav {
     align-items: center;
@@ -718,6 +728,9 @@ footer .col-4{
 .describe__job{
   width:100vw;
 }
+}
+.tittle__quiz{
+padding: 20px 0 20px 0;
 }
 @media (min-width: 576px) {
 .footerContacts{
@@ -752,6 +765,16 @@ footer .col-4{
 
 }
 @media (min-width: 992px) {
+  .quiz__container{
+    justify-content: space-between!important;
+}
+.tittle__quiz{
+  text-align: center;
+  font-size: 24px;
+line-height: 29px;
+color: #313638;
+padding: 62px 0 101px 0;
+}
 .about__this{
 font-size: 6px;
 opacity: 0;
