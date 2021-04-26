@@ -161,8 +161,8 @@
   </div>
 </div>
 <div class="row btnVariants endsBtn">
-	<div>		<button class="btn btn-primary" @click="repeat">Ответить снова</button></div>
-	<div>		<button class="btn btn-primary" @click="send">Отправить квиз</button></div>
+	<div>		<button class="btn btn-primary formButton" @click="repeat">Ответить снова</button></div>
+	<div>		<button class="btn btn-primary formButton" @click="send">Отправить квиз</button></div>
 </div>
 			</div>
 		</div>
@@ -391,7 +391,7 @@ window.removeEventListener('resize', this.resizeProgress)
 	position: absolute;
 	width:100%;
 	height: 4px;
-	background: black;
+	background: #313638;
 	top:8px;
 	border-radius:2px;
 }
@@ -460,6 +460,7 @@ font-weight:bold;
 .quiz{
     width: 100%;
     height: 100vh;
+    min-height:700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -563,5 +564,4 @@ border-radius:50%;
     padding: 50px 0;
 }
 }
-
 </style>

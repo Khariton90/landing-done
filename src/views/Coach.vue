@@ -81,7 +81,7 @@ import HeaderChild from "@/components/HeaderChild"
 import ButtonIWant from "@/components/Button-i-want"
 import btnFixed from "../scripts/btnFix"
 	export default{
-name:'Garage',
+name:'Coach',
 components:{
 	Footer,
 	HeaderChild,
@@ -102,7 +102,7 @@ beforeDestroy(){
 
 <style scoped>
 .auto__repair{
-  background: url(../assets/AutoRepair.png) no-repeat center;
+  background: url(../assets/Group_2.png) no-repeat center;
   background-size: cover;
   width: 100%;
   display: flex;

@@ -66,7 +66,7 @@
 				<img src="../assets/connectionAuto.png" alt="connectionAuto">
 			</div>
 						<div class="col last">
-				<button id="iWant" class="btn btn-primary">Хочу похожий</button>
+				<ButtonIWant />
 			</div>
 		</div>
 	</div>
@@ -78,12 +78,14 @@
 <script>
 import Footer from "@/components/Footer"
 import HeaderChild from "@/components/HeaderChild"
+import ButtonIWant from "@/components/Button-i-want"
 import btnFixed from "../scripts/btnFix"
 	export default{
 name:'Garage',
 components:{
 	Footer,
-	HeaderChild
+	HeaderChild,
+	ButtonIWant
 },
 methods: {
 
@@ -100,5 +102,15 @@ beforeDestroy(){
 
 
 <style scoped>
-
+.auto__repair{
+  background: url(../assets/Group_2.png) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: auto;
+  min-height:250px;
+  padding: calc(0px + 160 * ((100vw - 375px) / (1920 - 375))) 0;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 </style>

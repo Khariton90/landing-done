@@ -1,100 +1,124 @@
 <template>
-				<form>
+				<form @submit.prevent="submitOn">
 			<div class="form-group">
 			<label for="exampleInputEmail1">Оставьте заявку и получите <br>
 			консультацию профессионального <br>
 			маркетолога</label>
 			<input type="email" class="form-control" placeholder="Email"ref="exampleInputEmail1"
-			@input="formMail"
-			:class="{is_valid: mail}"
+			v-model.trim="email"
+			:class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.$dirty && !$v.email.email)}"
 			>
-			<div class="valid-tooltip" :class="{active: mail}">
-      Все хорошо!
-    </div>
-      <div class="invalid_tooltip" ref="mailMessage">
-        Введите корректный Email
-      </div>
+			<small 
+			class="invalid_tooltip invalid"
+			v-if="$v.email.$dirty && !$v.email.required"
+			>Email не должен быть пустым
+			</small>
+			<small 
+			class="invalid_tooltip invalid"
+			v-else-if="$v.email.$dirty && !$v.email.email"
+			>Введите корректный Email
+			</small>
 			</div>
 			<div class="form-group">
-			<input type="number" class="form-control" ref="exampleInputTel1" :class="{is_valid: tel}"
-			@input="formTel"
-			 placeholder="Телефон">
-			<div class="valid-tooltip" :class="{active: tel}">
-      Все хорошо!
-    </div>
-      <div class="invalid_tooltip" ref="telMessage">
-        Введите корректный телефон
-      </div>
+	<input type="tel" class="form-control" ref="exampleInputTel1" 
+	:value="value"
+	v-imask="mask"
+	:class="{invalid: ($v.value.$dirty && value.length < 18 && value.length > 1) || ($v.value.$dirty && value.length === 0)}"
+	@accept="onAccept"
+	@complete="onComplete"
+	placeholder="Телефон"
+	>
+			<small 
+			class="invalid_tooltip invalid"
+			v-if="$v.value.$dirty && value.length < 18 && value.length > 1"
+			>Ещё {{18 - value.length}} символов
+			</small>
+			<small 
+			class="invalid_tooltip invalid"
+			v-else-if="$v.value.$dirty && value.length === 0"
+			>Телефон не должен быть пустым
+			</small>
 			</div>
 			<div class="form-group">
 			<label for="exampleFormControlSelect1">Какая услуга вас интересует?</label>
-			<select class="select exampleFormControlSelect1">
-			<option v-for="site in siteVersion">{{ site }}</option>
+			<select class="select exampleFormControlSelect1" 
+			@change="changeCallStatus($event)"
+			>
+			<option 
+			v-for="(site, index) in siteVersion" 
+			:value="site" 
+			:key="index">
+			{{ site }}
+			</option>
 			</select>
 		</div>
 			<div class="form-group">
-			<button type="submit" class="btn btn-primary" @click.prevent="formSubmit">Оставить заявку</button>
+			<button type="submit" class="btn btn-primary">Оставить заявку</button>
 			</div>
 			</form>
 </template>
 
 <script>
-	export default{
+  import {IMaskDirective} from 'vue-imask';
+  import {email, required} from 'vuelidate/lib/validators'
+	export default {
+		name: 'Form',
 		data(){
-			return{
-				tel: false,
-				mail:false,
+			return {
 				siteVersion: [
 				'Сайт визитка',
 				'Лендинг',
 				'Промосайт',
 				'Корпоративный сайт',
-				'Интернет-магазин'
+				'Интернет-магазин',
 				],
-				formValue: []
-			}
+        value: '',
+        email: '',
+        site: 'Сайт визитка',
+        selected: this.siteVersion,
+        mask: {
+          mask: '{+7} (000) 000-00-00',
+          lazy: true
+},
+}
+},
+		validations: {
+email: { email, required },
+value: { required }
 		},
 		methods:{
-formMail(){
-let mail = this.$refs.exampleInputEmail1
-	if(!mail.value.includes('@') || !mail.value.includes('.ru') && !mail.value.includes('.com')){
-	this.mail = false
-	mail.classList.add('invalid')
-	this.$refs.mailMessage.classList.add('active')
-	return false
-	}else{
-		this.mail = true
-	this.$refs.mailMessage.classList.remove('active')
-	}
+			changeCallStatus(event){
+ this.site = event.target.value
 },
-formTel(){
-let tel = this.$refs.exampleInputTel1
-	tel.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-	if(tel.value.length < 11){
-	this.tel = false
-	tel.classList.add('invalid')
-	this.$refs.telMessage.classList.add('active')
-	return false
-	}else{
-	this.tel = true
-	this.$refs.telMessage.classList.remove('active')
-	}
-},
-formSubmit(){
-	let mail = this.$refs.exampleInputEmail1
-	let tel = this.$refs.exampleInputTel1
-	if(!this.mail || !this.tel){
-		this.formTel()
-		this.formMail()
-	}else{
-		this.formValue.push(mail.value)
-		this.formValue.push(tel.value)
-		mail.value = ''
-		tel.value = ''
-		this.tel = false
-		this.mail = false
-	}
-}
-		}
+			submitOn(){
+				if(this.$v.$invalid){
+					this.$v.$touch()
+					console.log(this.selected)
+					return
+				}else{
+				const formData  = {
+					email: this.email,
+					telephone: this.value,
+					site: this.site
+				}
+				alert('Сообщение отправлено, мы с вами свяжемся в ближайшее время')
+				console.log(formData)
+				window.location.reload()
+
+				}
+			},
+        onAccept (e) {
+          const maskRef = e.detail;
+          this.value = maskRef.value;
+
+     },
+        onComplete (e) {
+          const maskRef = e.detail;
+          maskRef.unmaskedValue
+        },
+		},
+    directives: {
+      imask: IMaskDirective
+    }
 	}
 </script>

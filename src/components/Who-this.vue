@@ -1,25 +1,25 @@
 <template>
-<div>
-<HeaderChild />
-<transition name="slide" mode="out-in">
-<div v-show="!menu">
-				<!--Секция - Разработка сайтов-->
-<Development/>
-			<!--Секция - Наши работы-->
-	<section class="section our__job" id="our__job">
+			<!--Секция - Для кого это необходимо-->
+	<section  class="who__this" id="who__this">
 <div class="container">
 <div class="row who">
 <div class="col-md">
-<h2>{{ titleJob }}</h2>
+<h2>{{ title }}</h2>
 </div>
 </div>
 <div class="blocks">
 		<div class="row job">
-		<div class="col-4 works" v-for="cart of carts" v-on:mouseover="cart.isActive = true"v-on:mouseleave="cart.isActive = false">
-			<img :src='cart.image'>
-			<div   @click="$router.push({name: cart.name})" :class="{active: cart.isActive}" class="describe__job">
-			<p class="describe__title" v-html="cart.title" :class="{active: cart.isActive}"></p>
-			<div class="about__this" :class="{active: cart.isActive}">
+		<div class="col-4 works"
+		v-for="cart of carts"
+		v-on:mouseover="cart.isActive = true"
+		v-on:mouseleave="cart.isActive = false">
+			<img v-bind:src='cart.image'>
+			<div :class="{active: cart.isActive}" class="describe__job">
+			<p class="describe__title"
+			v-html="cart.title"
+			:class="{active: cart.isActive}"></p>
+			<div class="about__this"
+			:class="{active: cart.isActive}">
 				<p v-html="cart.about"></p>
 			</div>
 		</div>
@@ -27,49 +27,17 @@
 		</div>
 	</div>
 	</div>
-			<div class="wrapper">
+	<div class="wrapper">
 		<Carousel :carts="carts"/>
 	</div>
 </section>
-<Footer />
-</div>
- </transition>
-</div>
 </template>
-
 <script>
-import Development from "@/components/Development"
-import Footer from "@/components/Footer"
 import Carousel from "@/components/carousel"
-import HeaderChild from "@/components/HeaderChild"
 	export default{
-		name: 'Projects',
 		data(){
 			return{
-			menu:false,
-			menuItem: [
-{
-item: 'Главная',
-link: '#website__development'
-},
-{
-item: 'Наши Работы',
-link: '#full__support'
-},
-{
-item: 'Цены',
-link: '#how__much'
-},
-{
-item: 'Поддержка',
-link: '#our__job'
-},
-{
-item: 'Контакты',
-link: '#contacts'
-},
-			],
-		titleJob: 'Наши работы',
+						title: 'Для кого это необходимо?',
 				carts: [
 {
 	id:1,
@@ -83,7 +51,7 @@ link: '#contacts'
 	id:2,
 	image: require('../assets/garage.svg'),
 	title: 'Автомастерская',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'garage',
 },
@@ -91,7 +59,7 @@ link: '#contacts'
 	id:3,
 	image: require('../assets/coach.jpg'),
 	title: 'Личный тренер',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'coach',
 },
@@ -99,7 +67,7 @@ link: '#contacts'
 	id:4,
 	image: require('../assets/courses.jpg'),
 	title: 'Курсы',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'courses',
 },
@@ -107,7 +75,7 @@ link: '#contacts'
 	id:5,
 	image: require('../assets/sales.jpg'),
 	title: 'Продажа товара',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'sales',
 },
@@ -115,7 +83,7 @@ link: '#contacts'
 	id:6,
 	image: require('../assets/creative.jpg'),
 	title: 'Для творчества',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'creative',
 },
@@ -123,7 +91,7 @@ link: '#contacts'
 	id:7,
 	image: require('../assets/engineering.jpg'),
 	title: 'Строительство<br> и инженерия',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'engineering',
 },
@@ -131,7 +99,7 @@ link: '#contacts'
 	id:8,
 	image: require('../assets/beauty.jpg'),
 	title: 'Красота и здоровье',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'beauty',
 },
@@ -139,41 +107,15 @@ link: '#contacts'
 	id:9,
 	image: require('../assets/promotion.jpg'),
 	title: 'Продвижение чего-либо',
-	about: '',
+	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
 	isActive: false,
 	name: 'promotion',
 },
 				],
 			}
 		},
-		components: {
-			Development,
-			Footer,
-			Carousel,
-			HeaderChild
-		},
-methods:{
-orderWebsite(){
-	console.log('Заказать')
-},
-	},
-
-mounted(){
-
-}
-}
+		components:{
+			Carousel
+		}
+	}
 </script>
-
-<style scoped>
-.our__job {
-    padding: 200px 0;
-}
-
-@media (min-width: 992px) {
-.our__job {
-    padding: 100px 0 200px 0;
-}
-
-}
-
-</style>

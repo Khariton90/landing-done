@@ -199,12 +199,13 @@ max-width: 100%;
 }
 .bg-light.active{
   background: rgba(224, 223, 213, 1)!important;
-      box-shadow: 0px 10px 13px -12px #222, 0px 5px 50px -10px rgb(0 0 0 / 0%);
       transition: 0.3s linear;
+}
+.bg-light.shadow{
+box-shadow: 0px 10px 13px -12px #222, 0px 5px 50px -10px rgb(0 0 0 / 0%);
 }
 .bg-light:hover{
     background: rgba(224, 223, 213, 1)!important;
-      box-shadow: 0px 10px 13px -12px #222, 0px 5px 50px -10px rgb(0 0 0 / 0%);
 }
 .navbar-brand{
   font-size: 14px;
@@ -702,7 +703,7 @@ padding: 10px 0;
 margin:0!important;
 }
 .is_valid {
-    border-color: #28a745;
+    border-color: #F09D51;
 }
 .invalid {
     border-color: rgba(220, 53, 69, 0.9);
@@ -715,7 +716,7 @@ margin:0!important;
     top: 100%;
     left: 0;
     z-index: 5;
-    display: none;
+    display: block;
     max-width: 100%;
     padding: 0.25rem 0.5rem;
     margin-top: .1rem;
@@ -728,8 +729,25 @@ margin:0!important;
 .invalid_tooltip.active,.valid-tooltip.active{
   display: block;
 }
+.valid-tooltip{
+  background:#F09D51;
+  color:#313638;
+}
 .invalid_tooltip.active{
   display: block;
+}
+.btn-primary:hover{
+  background:rgba(49, 54, 56, 0.9)!important;
+}
+.btn-primary:focus{
+  background: #313638!important;
+-webkit-box-shadow: -10px 0px 13px -7px rgba(0,0,0,0.5), 10px 0px 13px -7px rgba(0,0,0,0.5), 5px 5px 15px 5px rgba(0,0,0,0); 
+box-shadow: -10px 0px 13px -7px rgba(0,0,0,0.5), 10px 0px 13px -7px rgba(0,0,0,0.5), 5px 5px 15px 5px rgba(0,0,0,0);
+color:#E5E5E5!important;
+}
+.btn-primary:active{
+-webkit-box-shadow: -12px 0px 17px -7px rgba(0,0,0,0.5), 12px 0px 17px -7px rgba(0,0,0,0.5), 5px 5px 15px 5px rgba(0,0,0,0)!important; 
+box-shadow: -12px 0px 17px -7px rgba(0,0,0,0.5), 12px 0px 17px -7px rgba(0,0,0,0.5), 5px 5px 15px 5px rgba(0,0,0,0)!important;
 }
 
 /*Стили для отдельных проектов*/
@@ -740,17 +758,7 @@ a{
   padding: 62px 0 259px 0;
   background: #E5E5E5;
 }
-.auto__repair{
-  background: url(../assets/AutoRepair.png) no-repeat center;
-  background-size: cover;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  height: auto;
-  min-height:250px;
-  padding: calc(0px + 160 * ((100vw - 375px) / (1920 - 375))) 0;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
+
 
 .project__description,.sitesImages{
 background: #E5E5E5;

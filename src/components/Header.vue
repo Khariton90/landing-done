@@ -12,7 +12,7 @@
 	</div>
  </transition>
 					<header id="main">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" :class="{shadow: !MENU_STATE}">
 		<div class="container">
 		<a class="navbar-brand" href="#"><img src="../assets/logo.svg" alt="" width="141px"></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,7 +33,7 @@
 			<a @click.prevent=""  class="nav-link cont" v-scroll-to="'#contacts'">Контакты</a>
 				</li>
 				</ul>
-								<button class="order__website" id="buttonTop">Заказать сайт</button>
+								<button class="order__website" id="buttonTop" @click="orderWebsite">Заказать сайт</button>
 			</div>
 		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon" :class="{active: MENU_STATE}"><span></span></span>
@@ -69,19 +69,8 @@ methods:{
 		}
 	this.$store.dispatch('TOGGLE_MENU')
 },
-	onStart: function(e) {
-		window.history.go(-1)
-
-		setTimeout(() => {
-		let link = e.target.getAttribute('href')
-		let contacts = document.getElementById(link)
-		contacts.scrollIntoView({block: "center",behavior: "smooth"})
-
-},300)
-
-    },
 orderWebsite(){
-this.$emit('orderWebsite')
+alert('Заказать')
 }
 	},
 

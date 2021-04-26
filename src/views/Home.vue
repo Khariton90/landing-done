@@ -3,92 +3,21 @@
 <Header />
  <transition name="slide" mode="out-in">
 	<div v-show="!menu">
-
-		<!--Секция - Разработка сайтов-->
+<!--Секция - Разработка сайтов-->
 <Development/>
-
 		<!--Секция - Для кого это необходимо-->
-	<section  class="who__this" id="who__this">
-<div class="container">
-<div class="row who">
-<div class="col-md">
-<h2>{{ title }}</h2>
-</div>
-</div>
-<div class="blocks">
-		<div class="row job">
-		<div class="col-4 works"
-		v-for="cart of carts"
-		v-on:mouseover="cart.isActive = true"
-		v-on:mouseleave="cart.isActive = false">
-		
-			<img v-bind:src='cart.image'>
-
-			<div :class="{active: cart.isActive}" class="describe__job">
-
-			<p class="describe__title"
-			v-html="cart.title"
-			:class="{active: cart.isActive}"></p>
-
-			<div class="about__this"
-			:class="{active: cart.isActive}">
-
-				<p v-html="cart.about"></p>
-			</div>
-		</div>
-		</div>
-		</div>
-	</div>
-	</div>
-	<div class="wrapper">
-		<Carousel :carts="carts"/>
-	</div>
-</section>
-
-		<!--Секция -Полная поддержка-->
+<WhoThis />
+<!--Секция -Полная поддержка-->
 	<Support />
-
-		<!--Секция -Расскажите о своем проекте-->
+<!--Секция -Расскажите о своем проекте-->
 	<Usabout />
-			<!--Секция -Цены-->
+<!--Секция -Цены-->
 	<Price />
+<!--Секция -Шаги разработки-->
+	<Steps />
+<!--Секция -Наши работы-->
+	<OurJob />
 
-		<!--Секция -Шаги разработки-->
-		<Steps />
-
-		<!--Секция -Наши работы-->
-
-	<section class="section our__job" id="our__job">
-<div class="container">
-<div class="row who">
-<div class="col-md">
-<h2>{{ titleJob }}</h2>
-</div>
-</div>
-<div class="blocks">
-		<div class="row job">
-		<div class="col-4 works" v-for="cart of carts" v-on:mouseover="cart.isActive = true"v-on:mouseleave="cart.isActive = false">
-			<img v-bind:src='cart.image'>
-			<div :class="{active: cart.isActive}" class="describe__job">
-			<p class="describe__title" v-html="cart.title" :class="{active: cart.isActive}"></p>
-			<div class="about__this" :class="{active: cart.isActive}">
-				<p v-html="cart.about"></p>
-			</div>
-		</div>
-		</div>
-		</div>
-					<div class="row brif">
-<router-link to="/projects" class="btn btn-primary d-flex justify-content-center align-items-center">Посмотреть все</router-link>
-	</div>
-	</div>
-	</div>
-		<div class="wrapper">
-		<Carousel :carts="carts"/>
-							<div class="row brif">
-		<button class="btn btn-primary" id="viewАll" v-on:click="$router.push({name: 'projects'})">Посмотреть все</button>
-	</div>
-	</div>
-</section>
 
 <Youget />
 
@@ -101,6 +30,7 @@
 <script>
 import Development from "@/components/Development"
 import Usabout from "@/components/Section-us-about"
+import WhoThis from "@/components/Who-this"
 import Steps from "@/components/Section-steps"
 import Support from "@/components/Section-support"
 import Youget from "@/components/Youget"
@@ -108,97 +38,21 @@ import Price from "@/components/Section-price"
 import Footer from "@/components/Footer"
 import Carousel from "@/components/carousel"
 import Header from "@/components/Header"
+import OurJob from "@/components/OurJob"
 import scrollTo from "../scripts/scrollTo.js"
 import {mapGetters} from "vuex"
 export default {
 	data(){
 			return {
 			menu:false,
-		message: 19999,
-		title: 'Для кого это необходимо?',
-		titleJob: 'Наши работы',
-				carts: [
-{
-	id:1,
-	image: require('../assets/workshop.jpg'),
-	title: 'Мастерская на дому',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'workshop',
-},
-{
-	id:2,
-	image: require('../assets/garage.svg'),
-	title: 'Автомастерская',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'garage',
-},
-{
-	id:3,
-	image: require('../assets/coach.jpg'),
-	title: 'Личный тренер',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'coach',
-},
-{
-	id:4,
-	image: require('../assets/courses.jpg'),
-	title: 'Курсы',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'courses',
-},
-{
-	id:5,
-	image: require('../assets/sales.jpg'),
-	title: 'Продажа товара',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'sales',
-},
-{
-	id:6,
-	image: require('../assets/creative.jpg'),
-	title: 'Для творчества',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'creative',
-},
-{
-	id:7,
-	image: require('../assets/engineering.jpg'),
-	title: 'Строительство<br> и инженерия',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'engineering',
-},
-{
-	id:8,
-	image: require('../assets/beauty.jpg'),
-	title: 'Красота и здоровье',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'beauty',
-},
-{
-	id:9,
-	image: require('../assets/promotion.jpg'),
-	title: 'Продвижение чего-либо',
-	about: 'наращивание ресниц,<br> шитьё, массаж, ремонт<br> техники или уборка...',
-	isActive: false,
-	name: 'promotion',
-},
-				],
-
-
 	}
 	},
 	components:{
 		Header,
 		Development,
+		WhoThis,
 		Usabout,
+		OurJob,
 		Steps,
 		Support,
 		Youget,
@@ -230,6 +84,12 @@ menuClick(){
 mounted() {
 	window.addEventListener('scroll', this.navActive);
 	window.addEventListener('scroll', scrollTo);
+	            var section=this.$router.currentRoute.hash.replace("#", "");
+            if (section)
+                this.$nextTick(()=> window.document.getElementById(section).scrollIntoView({behavior:'smooth'}));
+                          
+
+
 },
 destroyed(){
 window.removeEventListener('scroll', this.navActive);

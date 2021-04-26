@@ -4,21 +4,11 @@
 
 	<div v-show="MENU_STATE"class="mobile-menu">
 				<ul>
-			<li>
-				<a href="website__development" @click.prevent="onStart">Главная</a>
-				</li>
-			<li>
-			<a href="full__support"  @click.prevent="onStart">Поддержка</a>
-				</li>
-			<li>
-				<a href="how__much"  @click.prevent="onStart" >Цены</a>
-				</li>
-			<li>
-			<a href="our__job"  @click.prevent="onStart">Наши работы</a>
-				</li>
-			<li>
-			<a href="contacts"  @click.prevent="onStart">Контакты</a>
-				</li>
+<li
+v-for="item of MENU_ITEM"
+:data="item.link"
+@click="menuClickHome">{{ item.item }}
+</li>
 				</ul>
 	</div>
  </transition>
@@ -29,22 +19,40 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 			<li class="nav-item">
-				<a href="website__development" @click.prevent="onStart" class="nav-link home">Главная</a>
+				<router-link 
+				to="/#website__development" 
+				class="nav-link home">Главная
+				</router-link>
 				</li>
 			<li class="nav-item">
-			<a href="full__support"  @click.prevent="onStart" class="nav-link">Поддержка</a>
+			<router-link 
+			to="/#full__support" 
+			class="nav-link">Поддержка
+			</router-link>
 				</li>
 			<li class="nav-item">
-				<a href="how__much"  @click.prevent="onStart"  class="nav-link">Цены</a>
+				<router-link 
+				to="/#how__much" 
+				class="nav-link">Цены
+				</router-link>
 				</li>
 			<li class="nav-item">
-			<a href="our__job"  @click.prevent="onStart"  class="nav-link activeThis active">Наши работы</a>
+			<router-link 
+			to="/#our__job"
+			class="nav-link active">
+			Наши работы
+			</router-link>
 				</li>
+
 			<li class="nav-item">
-			<a href="contacts"  @click.prevent="onStart" class="nav-link cont">Контакты</a>
+			<router-link to="/#contacts" class="nav-link cont">
+    Контакты
+</router-link>
 				</li>
 				</ul>
-								<button class="order__website" id="buttonTop" @click="menuClick">Заказать сайт</button>
+	<button class="order__website" id="buttonTop" 
+	@click="orderWebsite">Заказать сайт
+	</button>
 			</div>
 		<button @click="menuClick" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon" :class="{active: MENU_STATE}"><span></span></span>
@@ -72,33 +80,35 @@ computed:{
 },
 methods:{
 menuClick(){
+		this.$store.dispatch('TOGGLE_MENU')
 		if(document.body.classList.contains('lock')){
 			document.body.classList.remove('lock')
 		}else{
 			document.body.classList.add('lock')
 		}
-	this.$store.dispatch('TOGGLE_MENU')
+
+},
+menuClickHome(e){
+		if(document.body.classList.contains('lock')){
+			document.body.classList.remove('lock')
+		}else{
+			document.body.classList.add('lock')
+		}
+		this.$store.dispatch('TOGGLE_MENU')
+		this.$router.push('/'+ `${e.target.getAttribute('data')}`)
 },
 orderWebsite(){
-	console.log('Заказать')
+	alert('Заказать')
 },
 	onStart: function(e) {
 		if(window.screen.width < 992){
+					this.$store.dispatch('TOGGLE_MENU')
 		if(document.body.classList.contains('lock')){
 			document.body.classList.remove('lock')
 		}else{
 			document.body.classList.add('lock')
 		}
-			this.$store.dispatch('TOGGLE_MENU')
 		}
-		window.history.go(-1)
-		setTimeout(() => {
-		let link = e.target.getAttribute('href')
-		let contacts = document.getElementById(link)
-		contacts.scrollIntoView({block: "center",behavior: "smooth"})
-
-},300)
-
     },
 
 	},

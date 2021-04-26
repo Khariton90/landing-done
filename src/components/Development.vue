@@ -13,7 +13,7 @@
 			</ul>
 		</div>
 			<div class="col animation">
-			<img class="anim" src="" alt="">
+			<img class="anim" src="../assets/bi_card-image.png" alt="">
 		</div>
 			<div class="col form__header">
 <Form />

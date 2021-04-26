@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuelidate from 'vuelidate'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -14,7 +15,7 @@ Vue.config.productionTip = false
 var VueScrollTo = require('vue-scrollto');
 import { CarouselPlugin } from 'bootstrap-vue'
 Vue.use(CarouselPlugin)
-
+Vue.use(Vuelidate)
 Vue.use(VueScrollTo, {
      container: "body",
      duration: 200,
