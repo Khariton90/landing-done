@@ -1,6 +1,6 @@
 <template>
 <div>
-<HeaderChild />
+<HeaderChild :menuList="menuItem" @orderWebsite="orderWebsite"/>
 <transition name="slide" mode="out-in">
 <div v-show="!menu">
 				<!--Секция - Разработка сайтов-->
@@ -50,23 +50,23 @@ import HeaderChild from "@/components/HeaderChild"
 			menuItem: [
 {
 item: 'Главная',
-link: '#website__development'
-},
-{
-item: 'Наши Работы',
-link: '#full__support'
-},
-{
-item: 'Цены',
-link: '#how__much'
+link: 'website__development'
 },
 {
 item: 'Поддержка',
-link: '#our__job'
+link: 'full__support'
+},
+{
+item: 'Цены',
+link: 'how__much'
+},
+{
+item: 'Наши Работы',
+link: 'our__job'
 },
 {
 item: 'Контакты',
-link: '#contacts'
+link: 'contacts'
 },
 			],
 		titleJob: 'Наши работы',
@@ -153,10 +153,10 @@ link: '#contacts'
 			HeaderChild
 		},
 methods:{
-orderWebsite(){
-	console.log('Заказать')
+orderWebsite(e){
+	this.$router.push('/')
 },
-	},
+},
 
 mounted(){
 

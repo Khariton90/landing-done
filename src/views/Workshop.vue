@@ -95,7 +95,6 @@ window.addEventListener('scroll', btnFixed)
 },
 beforeDestroy(){
 	window.removeEventListener('scroll', btnFixed)
-	window.addEventListener('scroll', scrollTo);
 }
 }
 </script>

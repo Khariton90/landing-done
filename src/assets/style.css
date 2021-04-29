@@ -1,3 +1,6 @@
+html{
+  scroll-behavior: smooth;
+}
 body{
   margin:0;
   box-sizing: border-box;
@@ -630,6 +633,7 @@ line-height: 44px;
     justify-content: center;
   background: rgba(224, 223, 213, 0.9);
   top:0;
+  padding-left: 0px;
   transition: all 0.6s ease;
 }
 .you__get{

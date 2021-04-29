@@ -110,8 +110,9 @@ window.removeEventListener('scroll', scrollTo);
 #iWant{
 opacity:1;
 z-index: 1;
-transition: 1s all 0s ease;
 position: static;
+bottom: -70px;
+transition: 0.3s all 0s ease;
 }
 
 #iWant.fixBtn{
@@ -119,10 +120,10 @@ position: static;
 	z-index: 100;
 	opacity: 1;
 left:0;
-bottom: 100px;
+bottom: 35px;
 right: 0;
 margin: 0 auto;
-transition: 1s all 0s ease;
+transition: bottom 0.3s ease 0s;
 }
 .mobile-menu{
 	width:100%;
@@ -136,7 +137,7 @@ transition: 1s all 0s ease;
 	top:0;
 	z-index: 100;
 	overflow: auto;
-	transition: all 1s ease 0s;
+	transition: bottom 0.3s ease 0s;
 }
 
 .mobile-menu ul{
