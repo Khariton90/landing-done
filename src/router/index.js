@@ -1,16 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import News from '../views/News.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
 //Домашняя страница
-  { path: '/', name: 'Home', component: Home,
-children: [{ path: '/#contacts', name:'cont'} ]
-   },
-  { path: '/news', name: 'news', component: News,
+  { path: '/', name: 'Home', component: Home
    },
 //Страница проекты
   { path: '/projects', name: 'projects', component: () => import('../views/Projects.vue'),props: true
@@ -18,7 +14,7 @@ children: [{ path: '/#contacts', name:'cont'} ]
    },
 //Страница квиза
   { path: '/quiz', name: 'quiz',component: () => import('../views/quiz.vue')},
-//
+//Страницы проектов
 { path: '/projects/garage', name:'garage',   component: () => import('../views/Garage.vue')},
 { path: '/projects/workshop', name:'workshop',  component: () => import('../views/Workshop.vue')},
 { path: '/projects/promotion', name:'promotion',  component: () => import('../views/Promotion.vue')},
@@ -38,7 +34,9 @@ scrollBehavior: (to, from, savedPosition) => {
   if (savedPosition) {
     return savedPosition;
   };
+  if(to.name != 'home'){
   return { x: 0, y: 0 };
+  }
 }
 })
 
