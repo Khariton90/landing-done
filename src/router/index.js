@@ -31,12 +31,12 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 scrollBehavior: (to, from, savedPosition) => {
-  if (savedPosition) {
-    return savedPosition;
-  };
   if(to.name != 'home'){
   return { x: 0, y: 0 };
   }
+  if (savedPosition) {
+    return savedPosition;
+  };
 }
 })
 

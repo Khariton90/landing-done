@@ -89,7 +89,7 @@ for(let i = 0; i < stores.length; i++){
 				footer[0].scrollIntoView({behavior: 'smooth'})
 			}
 		})
-	},500)
+	},400)
 	}
 	}
 },
@@ -113,7 +113,7 @@ for(let i = 0; i < stores.length; i++){
 				footer[0].scrollIntoView({behavior: 'smooth'})
 			}
 		})
-	},500)
+	},400)
 	}
 }
 }
